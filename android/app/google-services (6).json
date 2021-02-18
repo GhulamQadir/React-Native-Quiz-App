@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1064800039370",
+    "firebase_url": "https://calc-26dfe.firebaseio.com",
+    "project_id": "calc-26dfe",
+    "storage_bucket": "calc-26dfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064800039370:android:2423e805b8539f73785f33",
+        "android_client_info": {
+          "package_name": "com.practiseproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064800039370-2pq7m7tt4um7d4jir4kd3gtn0qckqs2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKY56DOxLWOFv7BAEjJH_YMm8oHisjYKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064800039370-2pq7m7tt4um7d4jir4kd3gtn0qckqs2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
