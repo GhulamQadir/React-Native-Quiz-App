@@ -69,13 +69,17 @@ function SignUp({ navigation }){
             value={password} onChangeText={(text) => setPassword((text))} />
             </View>
 
-            <TouchableOpacity style={styles.btn}>
+            <View style={styles.buttons}>
+            <TouchableOpacity style={styles.btn}
+            onPress={loginUser}>
               <Text style={styles.btnText}>Login</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn}
+            onPress={signUpUser}>
               <Text style={styles.btnText}>Sign Up</Text>
             </TouchableOpacity>
+            </View>
             </View>
             </ScrollView>
     )
@@ -87,8 +91,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#3277a8',
       flex: 1,
       height: 'auto',
-      // justifyContent: 'center',
-      // alignItems: 'center',
     },
     text: {
       justifyContent: 'center',
@@ -104,14 +106,7 @@ const styles = StyleSheet.create({
       borderBottomWidth: 2,
       marginBottom: 30,
     },
-    buttons: {
-      backgroundColor: 'blue',
-      height: 35,
-      width: 80,
-      justifyContent: 'center',
-      alignItems: "center",
-      borderRadius: 2 
-    },
+
     registration: {
       color: 'white',
       fontWeight: '600',
@@ -134,6 +129,26 @@ const styles = StyleSheet.create({
       fontSize: 19,
       fontWeight: '500',
       color: 'red'
+    },
+    btn: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+      marginTop: 30,
+      backgroundColor: '#03a9fc',
+      height: 35,
+      width: 120,
+      textAlign: 'center',
+      borderRadius: 5,
+    },
+    btnText: {
+      fontSize: 20,
+      color: '#fff'
+    },
+    buttons: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: 30
     }
 })
 export default SignUp;

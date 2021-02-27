@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput, Field, ToastAndroid } from'react-native';
+import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput } from'react-native';
 import { Radio } from 'native-base';
-import {question} from '../Questions/questions';
-import { set } from 'react-native-reanimated';
-// import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { question } from '../Questions/questions';
 
 
 function QuizPage(){ 
@@ -58,8 +56,9 @@ function QuizPage(){
            </View>
          )
        })}
-     {count == 4 ? <Text>{total}</Text>: null }
-            <Button onPress={reset} title="play again" />
+     {count == 4 ? <Text>Your score is {total}            <Button onPress={reset} title="play again" />
+</Text>:  null}
+            {/* <Button onPress={reset} title="play again" /> */}
             </View>
     )
 }

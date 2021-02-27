@@ -15,7 +15,7 @@ function AppNavigation() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="SignUp" component={SignUp} />
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Drawer" component={DrawerScreen} />
+        {/* <Drawer.Screen name="Drawer" component={DrawerScreen} /> */}
         <Drawer.Screen name="QuizPage" component={QuizPage} />
         {/* <Drawer.Screen name="CloseDrawer" component={CloseDrawer} /> */}
       </Drawer.Navigator>
