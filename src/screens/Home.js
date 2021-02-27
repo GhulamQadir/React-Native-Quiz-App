@@ -66,7 +66,7 @@ function Home({ navigation }){
                <Text style={{color: 'white'}}>SignUp</Text>
              </TouchableOpacity>
             </View> */}
-            <Button onPress={startQuiz} title="Sign out" onPress={signedOut} />
+            <Button title="Sign out" onPress={signedOut} />
             </View>
             {/* <Button
         onPress={() => navigation.openDrawer('Drawer')}

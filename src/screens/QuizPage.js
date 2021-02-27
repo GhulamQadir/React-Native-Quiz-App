@@ -1,51 +1,65 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput } from'react-native';
-// import { Container, Header, Content, ListItem, Radio, Right, Left } from 'native-base';
-// import {questions} from '../Questions/questions';
+import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput, Field, ToastAndroid } from'react-native';
+import { Radio } from 'native-base';
+import {question} from '../Questions/questions';
+import { set } from 'react-native-reanimated';
+// import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+
 
 function QuizPage(){ 
-    // const [questions, setQuestions] = useState([
-    //     ["Who invented the computer?", "Charles Dickens", "Elon Musk", "Charles Babbage", "Bill Gates"]
-    //     ["Which tag is used for starting the body of HTML?"," <'body> "," <'b> "," <'bold> "," <'br> ","A"],
-    //     ["Choose the correct HTML element for largest heading"," <'heading> "," <'h4> "," <'head> "," <'h1> ","D"],
-    //     ["Choose the correct HTML element for starting the paragraph"," <'para> "," <'paragraph> "," <'p> "," <'pg> ","C"],
-    //     ["Choose the correct HTML element for bold the text"," <'b> "," <'bold> "," <'bd> "," <'BOLD> ","A"],    
-    // ])
+    const [count, setCount] = useState(0)
+    const [total, setTotal] = useState(0);
+    const [value, selectedValue] = useState("")
+    const [answer, setAnswer] = useState("")
+ 
+    const onHandleChange = (val, ans) => {
+      // alert(val)
+      // alert(ans)
+      selectedValue(val);
+      setAnswer(ans);
+
+    }
+    const save = () => {
+      if(value === answer){
+       let totalValue = total + 5;
+        setTotal(totalValue)
+      }
+     let countValue = count + 1;
+      setCount(countValue);
+      selectedValue("");
+      setAnswer("");
+
+    }
+    const reset = () => {
+      setCount(0);
+      setTotal(0);
+    }
     return(
         <View styles={styles.container}>
-            <Text style={styles.text}>Quiz About Computer</Text>
-            <Text style={styles.questions}>Q:1 Who is the Prime Minister of Pakistan?</Text>
-    
-            {/* <Container>
-        <Header />
-        <Content>
-          <ListItem selected={false} >
-            <Left>
-              <Text>Lunch Break</Text>
-            </Left>
-            <Right>
-              <Radio
-                color={"#f0ad4e"}
-                selectedColor={"#5cb85c"}
-                selected={false}
-              />
-            </Right>
-          </ListItem>
-          <ListItem selected={true}>
-            <Left>
-              <Text>Discussion with Client</Text>
-            </Left>
-            <Right>
-              <Radio
-                color={"#f0ad4e"}
-                selectedColor={"#5cb85c"}
-                selected={true}
-              />
-            </Right>
-          </ListItem>
-        </Content>
-      </Container> */}
-
+            {/* <Text style={styles.text}>Quiz About Computer</Text>
+            <Text style={styles.questions}>Q:1 Who is the Prime Minister of Pakistan?</Text> */}
+       {question.map((data, index)=>{
+         return (
+           <View key={index}>
+             {index=== count? <View>
+             <Text style={{fontSize: 20}}>{data.questions}</Text>
+             {data.answers.map((val,i)=> {
+               return (
+                 <View key={i}>
+                   <Radio onPress={() => onHandleChange(val, data.correctAns)}
+              selected={value == val}
+            />    
+                   <Text>{val}</Text>
+                 </View>
+               )
+             })}
+             <Button disabled={value==="" ? true: false} title="Next" onPress={save} />
+ </View>: null}
+           </View>
+         )
+       })}
+     {count == 4 ? <Text>{total}</Text>: null }
+            <Button onPress={reset} title="play again" />
             </View>
     )
 }
@@ -68,6 +82,11 @@ const styles = StyleSheet.create({
     questions: {
         fontSize: 16,
         marginTop: 30
+    },
+    nxtBtn: {
+      marginTop: "40",
+      height: 30,
+      width: 30
     }
 
 })

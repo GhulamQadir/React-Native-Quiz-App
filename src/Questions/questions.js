@@ -6,8 +6,9 @@ export const question= [
             "Elon Musk", 
             "Charles Babbage", 
             "Bill Gates",
-        ]
-    },
+        ],
+        correctAns: "Charles Babbage"
+        },
     {
         questions: "Who invented the cpu?",
         answers: [
@@ -15,7 +16,8 @@ export const question= [
             "Elon Musk", 
             "Charles Babbage", 
             "Bill Gates",
-        ]
+        ],
+        correctAns: "Bill Gates"
     },
     {
         questions: "Who invented the printer?",
@@ -24,7 +26,9 @@ export const question= [
             "Elon Musk", 
             "Charles Babbage", 
             "Bill Gates",
-        ]
+        ],
+        correctAns: "Charles Dickens"
+
     },
     {
         questions: "Who invented the keyboard?",
@@ -33,6 +37,8 @@ export const question= [
             "Elon Musk", 
             "Charles Babbage", 
             "Bill Gates",
-        ]
+        ],
+        correctAns: "Elon Musk"
+
     }
 ]
