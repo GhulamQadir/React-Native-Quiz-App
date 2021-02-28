@@ -1,48 +1,52 @@
 import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from'react-native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import React, { useState, useEffect } from 'react';
-import { LoginManager, AccessToken } from "react-native-fbsdk";
-import { color } from 'react-native-reanimated';
 import { login, signUp } from '../controller/LoginController'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
-function SignUp({ navigation }){
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const loginUser = () => {
-    login(email, password, loginComplete)
-    if(password.length< 6){
-      alert("Enter atleast six characters")
+function StudentLogin({ navigation }) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const loginUser = () => {
+      login(email, password, loginComplete)
+      if(password.length< 6){
+        alert("Enter atleast six characters")
+      }
+      }
+  
+    const loginComplete = () => {
+    navigation.navigate("RecruitmentRegistration")
     }
+  
+    const signUpUser = () => {
+      signUp(email, password, signUpComplete)
     }
-
-  const loginComplete = () => {
-  navigation.navigate("Home")
-  }
-
-  const signUpUser = () => {
-    signUp(email, password, signUpComplete)
-  }
-
-  const signUpComplete = () => {
-    navigation.navigate("Home")
-  }
-  return(
-    <ScrollView style={styles.container}>
-        <View>
-         <View style={{justifyContent: 'center', alignItems: 'center'}}>             
+  
+    const signUpComplete = () => {
+      navigation.navigate("RecruitmentRegistration")
+    }
+    return(
+         <ScrollView style={styles.container}>
+         <TouchableOpacity onPress={() => navigation.goBack()}>
+                <FontAwesome5 name={'arrow-left'} style={styles.backIcon} />
+         </TouchableOpacity>
+       
+             <View style={{justifyContent: 'center', alignItems: 'center'}}>             
              <View style={{marginTop: 50}}>
-               <Text style={styles.registration}>Registration</Text>
-            <TextInput style={styles.textInput} placeholder="Your name"
-            underlineColorAndroid={'transparent'}  />
-            </View>
+               <Text style={styles.registration}>Student Registration</Text>
+              </View>
+
+              <TextInput style={styles.textInput} placeholder="Your name"
+            placeholderTextColor={'#fff'} />
+     
             <TextInput style={styles.textInput} placeholder="Your email"
             value={email} onChangeText={(text) => setEmail((text))}
-            underlineColorAndroid={'transparent'}  />
+            placeholderTextColor={'#fff'} />
             
             <TextInput style={styles.textInput} placeholder="Your password" secureTextEntry={true}
-            value={password} onChangeText={(text) => setPassword((text))} />
+            value={password} onChangeText={(text) => setPassword((text))}
+            placeholderTextColor={'#fff'} />
             </View>
 
             <View style={styles.buttons}>
@@ -56,12 +60,9 @@ function SignUp({ navigation }){
               <Text style={styles.btnText}>Sign Up</Text>
             </TouchableOpacity>
             </View>
-            </View>
             </ScrollView>
     )
 }
-
- 
 const styles = StyleSheet.create({
     container: {
       backgroundColor: '#3277a8',
@@ -125,6 +126,13 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 30
-    }
+    },
+    backIcon: {
+      marginTop: 6,
+      fontSize: 18,
+      width: 80,
+      color: '#fff'
+  }
 })
-export default SignUp;
+
+export default StudentLogin;

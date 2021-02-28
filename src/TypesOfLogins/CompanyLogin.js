@@ -1,67 +1,73 @@
 import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from'react-native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import React, { useState, useEffect } from 'react';
-import { LoginManager, AccessToken } from "react-native-fbsdk";
-import { color } from 'react-native-reanimated';
 import { login, signUp } from '../controller/LoginController'
 
 
-function SignUp({ navigation }){
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const loginUser = () => {
-    login(email, password, loginComplete)
-    if(password.length< 6){
-      alert("Enter atleast six characters")
+function CompanyLogin({ navigation }) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const loginUser = () => {
+      login(email, password, loginComplete)
+      if(password.length< 6){
+        alert("Enter atleast six characters")
+      }
+      }
+  
+    const loginComplete = () => {
+    navigation.navigate("MainScreen")
     }
-    }
-
-  const loginComplete = () => {
-  navigation.navigate("Home")
-  }
-
-  const signUpUser = () => {
-    signUp(email, password, signUpComplete)
-  }
-
-  const signUpComplete = () => {
-    navigation.navigate("Home")
-  }
-  return(
-    <ScrollView style={styles.container}>
+  
+    // const signUpUser = () => {
+    //   signUp(email, password, signUpComplete)
+    // }
+  
+    // const signUpComplete = () => {
+    //   navigation.navigate("CompanyRegis")
+    // }
+    return(
+        <ScrollView style={styles.container}>
         <View>
          <View style={{justifyContent: 'center', alignItems: 'center'}}>             
              <View style={{marginTop: 50}}>
-               <Text style={styles.registration}>Registration</Text>
-            <TextInput style={styles.textInput} placeholder="Your name"
-            underlineColorAndroid={'transparent'}  />
+               <Text style={styles.registration}>Company Registration</Text>
             </View>
-            <TextInput style={styles.textInput} placeholder="Your email"
-            value={email} onChangeText={(text) => setEmail((text))}
+
+            {/* <TextInput style={styles.textInput} placeholder="Company name"
+            underlineColorAndroid={'transparent'}  />
+
+            <TextInput style={styles.textInput} placeholder="Number" keyboardType={'number-pad'}
             underlineColorAndroid={'transparent'}  />
             
-            <TextInput style={styles.textInput} placeholder="Your password" secureTextEntry={true}
-            value={password} onChangeText={(text) => setPassword((text))} />
+            <TextInput style={styles.textInput} placeholder="Location"
+            underlineColorAndroid={'transparent'}  />
+             */}
+            <TextInput style={styles.textInput} placeholder="Email" keyboardType={'email-address'}
+            value={email} onChangeText={(text) => setEmail((text))}
+            placeholderTextColor={'#fff'} />
+            
+            <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} 
+            value={password} onChangeText={(text) => setPassword((text))} 
+            placeholderTextColor={'#fff'} />
             </View>
 
             <View style={styles.buttons}>
             <TouchableOpacity style={styles.btn}
             onPress={loginUser}>
-              <Text style={styles.btnText}>Login</Text>
+            <Text style={styles.btnText}>Login</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.btn}
-            onPress={signUpUser}>
-              <Text style={styles.btnText}>Sign Up</Text>
+            onPress={() => navigation.navigate("CompanyRegis")}>
+              <Text style={styles.btnText}>Register New</Text>
             </TouchableOpacity>
             </View>
             </View>
             </ScrollView>
+
     )
 }
 
- 
 const styles = StyleSheet.create({
     container: {
       backgroundColor: '#3277a8',
@@ -118,8 +124,9 @@ const styles = StyleSheet.create({
       borderRadius: 5,
     },
     btnText: {
-      fontSize: 20,
-      color: '#fff'
+      fontSize: 13,
+      color: '#fff',
+      fontWeight: '700'
     },
     buttons: {
       justifyContent: 'center',
@@ -127,4 +134,5 @@ const styles = StyleSheet.create({
       marginBottom: 30
     }
 })
-export default SignUp;
+
+export default CompanyLogin;
