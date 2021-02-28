@@ -11,6 +11,7 @@ function RecruitmentRegistration({navigation}){
     const [college, setCollege] = useState("");
     const [degree, setDegree] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
+    const [stuData, setStudData] = useState("");
 
     const save_data = () => {
         let students_Data = {
@@ -22,8 +23,20 @@ function RecruitmentRegistration({navigation}){
             phoneNum,
         }
         database().ref('/').child('Students Data').push(students_Data)
-        alert("Your response has been recorded")
-       }
+        // alert("Your response has been recorded")
+        database().ref('/Students Data').on('value', querySnapShot => {
+        //  console.log("snapshot==>>",querySnapShot)
+            let data = querySnapShot.val() ? querySnapShot.val() : {};
+            let record = {data};
+            // console.log("record===>>",data)
+            setStudData(record);
+            navigation.navigate("MainScreen")
+            // this.setState({
+            //   todos: todoItems,
+            // });
+          });
+           
+    }
     
     return(
         <ScrollView>
@@ -50,7 +63,7 @@ function RecruitmentRegistration({navigation}){
                 onChangeText={(e) => setCollege(e)} placeholder="College" />
                 
                 <TextInput style={styles.textInput} value={degree} 
-                onChangeText={(e) => setDegree(e)} placeholder="Degree No." />
+                onChangeText={(e) => setDegree(e)} placeholder="Degree" />
                 
                 <TextInput style={styles.textInput} value={phoneNum}
                 onChangeText={(e) => setPhoneNum(e)} placeholder="Phone No." />

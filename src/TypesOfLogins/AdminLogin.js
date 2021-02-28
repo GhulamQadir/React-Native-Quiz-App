@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from'react-native';
 import { login, signUp } from '../controller/LoginController'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 function AdminLogin({ navigation }) {
@@ -27,7 +28,11 @@ function AdminLogin({ navigation }) {
     }
     return(
         <ScrollView style={styles.container}>
-         <View style={{justifyContent: 'center', alignItems: 'center'}}>             
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <FontAwesome5 name={'arrow-left'} style={styles.backIcon} />
+        </TouchableOpacity>
+        
+                 <View style={{justifyContent: 'center', alignItems: 'center'}}>             
              <View style={{marginTop: 50}}>
                <Text style={styles.registration}>Admin Registration</Text>
             <TextInput style={styles.textInput} placeholder="Your name"
@@ -122,6 +127,12 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 30
-    }
+    },
+    backIcon: {
+      marginTop: 6,
+      fontSize: 18,
+      width: 80,
+      color: '#fff'
+  }
 })
 export default AdminLogin;

@@ -12,7 +12,8 @@ import StudentLogin from '../TypesOfLogins/StudentLogin';
 import MainScreen from '../screens/MainScreen';
 import RecruitmentRegistration from '../registration/RecruitmentRegis';
 import CompanyRegis from '../registration/CompanyRegis';
-
+import StudentsRecords from '../records/StudentsRecords';
+import CompaniesRecords from '../records/CompaniesRecords';
 const Drawer = createDrawerNavigator();
 
 
@@ -31,6 +32,8 @@ function AppNavigation() {
         <Drawer.Screen name="MainScreen" component={MainScreen} />
         <Drawer.Screen name="RecruitmentRegistration" component={RecruitmentRegistration} />
         <Drawer.Screen name="CompanyRegis" component={CompanyRegis} />
+        <Drawer.Screen name="CompaniesRecords" component={CompaniesRecords} />
+        <Drawer.Screen name="StudentsRecords" component={StudentsRecords} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

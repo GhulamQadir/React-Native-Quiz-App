@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Button, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 
 function LoginTypes({navigation}){
     return(
         <ScrollView>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+                <FontAwesome5 name={'arrow-left'} style={styles.backIcon} />
+        </TouchableOpacity>
+        
         <View style={styles.container}>
             <Text style={styles.heading}>Select Your Category</Text>
         <TouchableOpacity style={styles.btn} activeOpacity={0.6} 
@@ -58,6 +63,13 @@ const styles = StyleSheet.create({
           fontSize: 26,
           fontWeight: '700',
           color: '#4287f5'
-      }
+      },
+      backIcon: {
+        marginTop: 6,
+        fontSize: 18,
+        width: 80,
+        color: '#4287f5'
+    }
+
 })
 export default LoginTypes;

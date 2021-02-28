@@ -16,7 +16,7 @@ function Home({ navigation }){
   //   navigation.navigate("QuizPage")
   // }
   return(
-    <ScrollView>
+        <ScrollView>
         <View style={styles.container}>
         <Text style={styles.heading}>Campus Recruitment System</Text>
         <Image style={styles.img} source={{uri: 'https://i.ytimg.com/vi/ZIYbJ3FL_Zs/maxresdefault.jpg'}} />
@@ -33,7 +33,7 @@ function Home({ navigation }){
           
           
           
-          
+
           
           
           
